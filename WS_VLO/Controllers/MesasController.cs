@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WS_VLO.Models;
+using System.Data.Entity.Migrations;
 
 namespace WS_VLO.Controllers
 {
@@ -37,19 +38,34 @@ namespace WS_VLO.Controllers
 
         // PUT: api/Mesas/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMesas(int id, Mesas mesas)
+        public IHttpActionResult PutMesas( Mesas mesas)
+
         {
-            if (!ModelState.IsValid)
+            /* if (!ModelState.IsValid)
+             {
+                 return BadRequest(ModelState);
+             }*/
+
+            Pedido pd = (from p in db.Pedidoes where p.IdMesa == mesas.IdMesa select p).FirstOrDefault();
+            //pd.FirstOrDefault();
+            DetallePedido pd2 = (from pp in db.DetallePedidoes where pp.IdPedido == pd.IdPedido select pp).FirstOrDefault();
+
+            var mesaId = from m in db.Mesas
+                         where m.IdMesa == mesas.IdMesa
+                         select m;
+
+            if(pd2 != null)
             {
-                return BadRequest(ModelState);
+                return NotFound();
             }
 
-            if (id != mesas.IdMesa)
+            if (mesaId.FirstOrDefault().IdMesa != mesas.IdMesa)
             {
                 return BadRequest();
             }
-
-            db.Entry(mesas).State = EntityState.Modified;
+            mesas.NumMesa = mesas.NumMesa.Replace("Mesa ", "");
+            db.Set<Mesas>().AddOrUpdate(mesas);
+            //db.Entry(mesas).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +73,7 @@ namespace WS_VLO.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MesasExists(id))
+                if (!MesasExists(mesaId.FirstOrDefault().IdMesa))
                 {
                     return NotFound();
                 }
@@ -70,6 +86,43 @@ namespace WS_VLO.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
+        /*
+    [ResponseType(typeof(void))]
+    public IHttpActionResult PutMesas(int id, Mesas mesas)
+
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        if (id != mesas.IdMesa)
+        {
+            return BadRequest();
+        }
+
+        db.Entry(mesas).State = EntityState.Modified;
+
+        try
+        {
+            db.SaveChanges();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!MesasExists(id))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        return StatusCode(HttpStatusCode.NoContent);
+    }
+    */
         // POST: api/Mesas
         [ResponseType(typeof(Mesas))]
         public IHttpActionResult PostMesas(Mesas mesas)

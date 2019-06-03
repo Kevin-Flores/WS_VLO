@@ -90,10 +90,20 @@ namespace WS_VLO.Controllers
         public IHttpActionResult DeletePedido(int id)
         {
             Pedido pedido = db.Pedidoes.Find(id);
+            DetallePedido detped = (from pd in db.DetallePedidoes
+                         where pd.IdPedido == id
+                         select pd).FirstOrDefault();
+
+            if(detped != null)
+            {
+                return NotFound();
+            }
+
             if (pedido == null)
             {
                 return NotFound();
             }
+
 
             db.Pedidoes.Remove(pedido);
             db.SaveChanges();

@@ -14,12 +14,14 @@ namespace WS_VLO.Models
         //Relaciones
         //Tabla Menu
         public int IdMenu { get; set; }
+        public virtual Menu Menu { get; set; }
         //Tabla Pedido
         public int IdPedido { get; set; }
+        public virtual Pedido Pedido { get; set; }
 
         public int cantidad { get; set; }
-        public int sesion { get; set; }
         public int Estado { get; set; }
         public string Termino { get; set; }
+        public string Comentarios { get; set; }
     }
 }

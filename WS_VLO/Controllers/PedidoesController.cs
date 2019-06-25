@@ -79,6 +79,14 @@ namespace WS_VLO.Controllers
                 return BadRequest(ModelState);
             }
 
+            Mesas Mm = new Mesas();
+            Mm = db.Mesas.Find(pedido.IdMesa);
+            Mm.Estado = false;
+            db.SaveChanges();
+            
+            
+
+
             db.Pedidoes.Add(pedido);
             db.SaveChanges();
 
@@ -94,7 +102,9 @@ namespace WS_VLO.Controllers
                          where pd.IdPedido == id
                          select pd).FirstOrDefault();
 
-            if(detped != null)
+            
+
+            if (detped != null)
             {
                 return NotFound();
             }
@@ -103,7 +113,10 @@ namespace WS_VLO.Controllers
             {
                 return NotFound();
             }
-
+            Mesas Mm = new Mesas();
+            Mm = db.Mesas.Find(pedido.IdMesa);
+            Mm.Estado = true;
+            db.SaveChanges();
 
             db.Pedidoes.Remove(pedido);
             db.SaveChanges();

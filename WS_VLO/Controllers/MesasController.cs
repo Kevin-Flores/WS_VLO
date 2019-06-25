@@ -46,6 +46,11 @@ namespace WS_VLO.Controllers
                  return BadRequest(ModelState);
              }*/
 
+            if(mesas == null)
+            {
+                return NotFound();
+            }
+
             Pedido pd = (from p in db.Pedidoes where p.IdMesa == mesas.IdMesa select p).FirstOrDefault();
             //pd.FirstOrDefault();
             DetallePedido pd2 = (from pp in db.DetallePedidoes where pp.IdPedido == pd.IdPedido select pp).FirstOrDefault();

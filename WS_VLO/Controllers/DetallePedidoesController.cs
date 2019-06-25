@@ -53,6 +53,8 @@ namespace WS_VLO.Controllers
 
             try
             {
+                //var recetas db
+
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)

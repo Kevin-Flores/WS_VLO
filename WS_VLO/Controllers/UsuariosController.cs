@@ -19,9 +19,20 @@ namespace WS_VLO.Controllers
         // GET: api/Usuarios
         public IQueryable<Usuarios> GetUsuarios()
         {
-            var usuarios = db.Usuarios;
+            try
+            {
+                var usuarios = db.Usuarios;
 
-            return usuarios;
+                return usuarios;
+            }
+            catch (Exception eo)
+            {
+
+                var eoi = eo.Message;
+                return null;
+            }
+            
+            
         }
 
         [ResponseType(typeof(Usuarios))]

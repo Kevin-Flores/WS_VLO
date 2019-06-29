@@ -17,9 +17,16 @@ namespace WS_VLO.Controllers
         private DBContext db = new DBContext();
 
         // GET: api/DetallePedidoes
-        public IQueryable<DetallePedido> GetDetallePedidoes()
+        public IHttpActionResult GetDetallePedidoes()
         {
-            return db.DetallePedidoes;
+            var orden = db.Pedidoes.Where(x => x.Estado == 1).ToList();
+            var detalle = db.DetallePedidoes.Where(x => x.Estado == 1).ToList();
+            ListaBebida cvm = new ListaBebida();
+            cvm.pedidos = orden;
+            cvm.detalle = detalle;
+            cvm.menus = db.Menus.ToList();
+            cvm.tipomenu = db.TipoMenus.ToList();
+            return Ok(cvm);
         }
 
         // GET: api/DetallePedidoes/5
@@ -47,6 +54,17 @@ namespace WS_VLO.Controllers
             if (id != detallePedido.IdDetalle)
             {
                 return BadRequest();
+            }
+            else
+            {
+                //List<Receta> receta = db.Recetas.Where(o => o.IdMenu == detallePedido.IdMenu).ToList();
+                //foreach (var r in receta)
+                //{
+                //    Productos product = db.Productos.Where(o => o.IdProducto == r.IdProducto).FirstOrDefault();
+                //    Double total = detallePedido.cantidad * r.CantidadUtilizada;
+                //    product.Cantidad = product.Cantidad - total;
+                //    db.SaveChanges();
+                //}
             }
 
             db.Entry(detallePedido).State = EntityState.Modified;
@@ -79,6 +97,17 @@ namespace WS_VLO.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+            else
+            {
+                List<Receta> receta = db.Recetas.Where(o => o.IdMenu == detallePedido.IdMenu).ToList();
+                foreach (var r in receta)
+                {
+                    Productos product = db.Productos.Where(o => o.IdProducto == r.IdProducto).FirstOrDefault();
+                    Double total = detallePedido.cantidad * r.CantidadUtilizada;
+                    product.Cantidad = product.Cantidad - total;
+                    db.SaveChanges();
+                }
             }
 
             db.DetallePedidoes.Add(detallePedido);

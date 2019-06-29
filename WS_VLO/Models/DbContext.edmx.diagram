@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="df06e07f731a4f96ab65d23b370c65ba" Name="Diagram1">
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.C__MigrationHistory" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.AsignacionTurnoes" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Categorias" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.DetalleCompras" Width="1.5" PointX="8.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.DetallePedidoes" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Facturas" Width="1.5" PointX="10.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Menus" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Mesas" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Pedidoes" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Prestamos" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Productos" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Proveedores" Width="1.5" PointX="6" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Recetas" Width="1.5" PointX="13.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Roles" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.TipoMenus" Width="1.5" PointX="6" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Turnos" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VLO.Models.ContextModel.Usuarios" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_AsignacionTurnoes_dbo_Turnos_IdTurno" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_AsignacionTurnoes_dbo_Usuarios_IdUser" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_Productos_dbo_Categorias_IdCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_DetalleCompras_dbo_Productos_IdProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_DetalleCompras_dbo_Proveedores_IdProveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_DetallePedidoes_dbo_Menus_IdMenu" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_DetallePedidoes_dbo_Pedidoes_IdPedido" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_Facturas_dbo_Pedidoes_IdPedido" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_Menus_dbo_TipoMenus_IdTipoMenu" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_Recetas_dbo_Menus_IdMenu" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_Pedidoes_dbo_Mesas_IdMesa" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_Pedidoes_dbo_Usuarios_IdUser" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_Prestamos_dbo_Productos_IdProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_Prestamos_dbo_Usuarios_IdUser" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_Recetas_dbo_Productos_IdProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="VLO.Models.ContextModel.FK_dbo_Usuarios_dbo_Roles_IdRol" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

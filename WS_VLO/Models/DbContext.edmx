@@ -1,0 +1,1259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VLO.Models.ContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AsignacionTurnoes">
+          <Key>
+            <PropertyRef Name="IdAsignacion" />
+          </Key>
+          <Property Name="IdAsignacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTurno" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleCompras">
+          <Key>
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="float" Nullable="false" />
+          <Property Name="PrecioUnit" Type="float" Nullable="false" />
+          <Property Name="FechaCompra" Type="datetime" Nullable="false" />
+          <Property Name="PrecioTotal" Type="float" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetallePedidoes">
+          <Key>
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMenu" Type="int" Nullable="false" />
+          <Property Name="IdPedido" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="Termino" Type="nvarchar(max)" />
+          <Property Name="Comentarios" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="NumFactura" />
+          </Key>
+          <Property Name="NumFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPedido" Type="int" Nullable="false" />
+          <Property Name="TotalNeto" Type="float" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="Descuento" Type="float" Nullable="false" />
+          <Property Name="FechaFactura" Type="datetime" />
+          <Property Name="Propina" Type="float" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="Precio" Type="float" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IdTipoMenu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mesas">
+          <Key>
+            <PropertyRef Name="IdMesa" />
+          </Key>
+          <Property Name="IdMesa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumMesa" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pedidoes">
+          <Key>
+            <PropertyRef Name="IdPedido" />
+          </Key>
+          <Property Name="IdPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Cliente" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="FechaInicial" Type="nvarchar(max)" />
+          <Property Name="IdMesa" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prestamos">
+          <Key>
+            <PropertyRef Name="IdPrestamo" />
+          </Key>
+          <Property Name="IdPrestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="float" Nullable="false" />
+          <Property Name="CantidadDevuelta" Type="float" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="FechaDev" Type="datetime" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="75" />
+          <Property Name="Cantidad" Type="float" Nullable="false" />
+          <Property Name="Fecha" Type="nvarchar(max)" />
+          <Property Name="CantidadMinima" Type="float" Nullable="false" />
+          <Property Name="UnidadMedida" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="150" />
+          <Property Name="Telefono" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar(max)" />
+          <Property Name="NombreContacto" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recetas">
+          <Key>
+            <PropertyRef Name="IdReceta" />
+          </Key>
+          <Property Name="IdReceta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CantidadUtilizada" Type="float" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="IdMenu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipoMenus">
+          <Key>
+            <PropertyRef Name="IdTipoMenu" />
+          </Key>
+          <Property Name="IdTipoMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Turnos">
+          <Key>
+            <PropertyRef Name="IdTurno" />
+          </Key>
+          <Property Name="IdTurno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="HoraInicial" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HoraFinal" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AsignacionTurnoes_dbo_Turnos_IdTurno">
+          <End Role="Turnos" Type="Self.Turnos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AsignacionTurnoes" Type="Self.AsignacionTurnoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turnos">
+              <PropertyRef Name="IdTurno" />
+            </Principal>
+            <Dependent Role="AsignacionTurnoes">
+              <PropertyRef Name="IdTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AsignacionTurnoes_dbo_Usuarios_IdUser">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AsignacionTurnoes" Type="Self.AsignacionTurnoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="AsignacionTurnoes">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DetalleCompras_dbo_Productos_IdProducto">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetalleCompras" Type="Self.DetalleCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="DetalleCompras">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DetalleCompras_dbo_Proveedores_IdProveedor">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetalleCompras" Type="Self.DetalleCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="DetalleCompras">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DetallePedidoes_dbo_Menus_IdMenu">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetallePedidoes" Type="Self.DetallePedidoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="IdMenu" />
+            </Principal>
+            <Dependent Role="DetallePedidoes">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DetallePedidoes_dbo_Pedidoes_IdPedido">
+          <End Role="Pedidoes" Type="Self.Pedidoes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetallePedidoes" Type="Self.DetallePedidoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidoes">
+              <PropertyRef Name="IdPedido" />
+            </Principal>
+            <Dependent Role="DetallePedidoes">
+              <PropertyRef Name="IdPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Facturas_dbo_Pedidoes_IdPedido">
+          <End Role="Pedidoes" Type="Self.Pedidoes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidoes">
+              <PropertyRef Name="IdPedido" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Menus_dbo_TipoMenus_IdTipoMenu">
+          <End Role="TipoMenus" Type="Self.TipoMenus" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMenus">
+              <PropertyRef Name="IdTipoMenu" />
+            </Principal>
+            <Dependent Role="Menus">
+              <PropertyRef Name="IdTipoMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Pedidoes_dbo_Mesas_IdMesa">
+          <End Role="Mesas" Type="Self.Mesas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pedidoes" Type="Self.Pedidoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesas">
+              <PropertyRef Name="IdMesa" />
+            </Principal>
+            <Dependent Role="Pedidoes">
+              <PropertyRef Name="IdMesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Pedidoes_dbo_Usuarios_IdUser">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pedidoes" Type="Self.Pedidoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Pedidoes">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Prestamos_dbo_Productos_IdProducto">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Prestamos_dbo_Usuarios_IdUser">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Productos_dbo_Categorias_IdCategoria">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Recetas_dbo_Menus_IdMenu">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="IdMenu" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Recetas_dbo_Productos_IdProducto">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Usuarios_dbo_Roles_IdRol">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VLOModelsContextModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AsignacionTurnoes" EntityType="Self.AsignacionTurnoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleCompras" EntityType="Self.DetalleCompras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetallePedidoes" EntityType="Self.DetallePedidoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesas" EntityType="Self.Mesas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedidoes" EntityType="Self.Pedidoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prestamos" EntityType="Self.Prestamos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recetas" EntityType="Self.Recetas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMenus" EntityType="Self.TipoMenus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AsignacionTurnoes_dbo_Turnos_IdTurno" Association="Self.FK_dbo_AsignacionTurnoes_dbo_Turnos_IdTurno">
+            <End Role="Turnos" EntitySet="Turnos" />
+            <End Role="AsignacionTurnoes" EntitySet="AsignacionTurnoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AsignacionTurnoes_dbo_Usuarios_IdUser" Association="Self.FK_dbo_AsignacionTurnoes_dbo_Usuarios_IdUser">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="AsignacionTurnoes" EntitySet="AsignacionTurnoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DetalleCompras_dbo_Productos_IdProducto" Association="Self.FK_dbo_DetalleCompras_dbo_Productos_IdProducto">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="DetalleCompras" EntitySet="DetalleCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DetalleCompras_dbo_Proveedores_IdProveedor" Association="Self.FK_dbo_DetalleCompras_dbo_Proveedores_IdProveedor">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="DetalleCompras" EntitySet="DetalleCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DetallePedidoes_dbo_Menus_IdMenu" Association="Self.FK_dbo_DetallePedidoes_dbo_Menus_IdMenu">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="DetallePedidoes" EntitySet="DetallePedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DetallePedidoes_dbo_Pedidoes_IdPedido" Association="Self.FK_dbo_DetallePedidoes_dbo_Pedidoes_IdPedido">
+            <End Role="Pedidoes" EntitySet="Pedidoes" />
+            <End Role="DetallePedidoes" EntitySet="DetallePedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Facturas_dbo_Pedidoes_IdPedido" Association="Self.FK_dbo_Facturas_dbo_Pedidoes_IdPedido">
+            <End Role="Pedidoes" EntitySet="Pedidoes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Menus_dbo_TipoMenus_IdTipoMenu" Association="Self.FK_dbo_Menus_dbo_TipoMenus_IdTipoMenu">
+            <End Role="TipoMenus" EntitySet="TipoMenus" />
+            <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Pedidoes_dbo_Mesas_IdMesa" Association="Self.FK_dbo_Pedidoes_dbo_Mesas_IdMesa">
+            <End Role="Mesas" EntitySet="Mesas" />
+            <End Role="Pedidoes" EntitySet="Pedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Pedidoes_dbo_Usuarios_IdUser" Association="Self.FK_dbo_Pedidoes_dbo_Usuarios_IdUser">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Pedidoes" EntitySet="Pedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Prestamos_dbo_Productos_IdProducto" Association="Self.FK_dbo_Prestamos_dbo_Productos_IdProducto">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Prestamos_dbo_Usuarios_IdUser" Association="Self.FK_dbo_Prestamos_dbo_Usuarios_IdUser">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Productos_dbo_Categorias_IdCategoria" Association="Self.FK_dbo_Productos_dbo_Categorias_IdCategoria">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Recetas_dbo_Menus_IdMenu" Association="Self.FK_dbo_Recetas_dbo_Menus_IdMenu">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Recetas_dbo_Productos_IdProducto" Association="Self.FK_dbo_Recetas_dbo_Productos_IdProducto">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Usuarios_dbo_Roles_IdRol" Association="Self.FK_dbo_Usuarios_dbo_Roles_IdRol">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VLO.Models.ContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AsignacionTurnoes">
+          <Key>
+            <PropertyRef Name="IdAsignacion" />
+          </Key>
+          <Property Name="IdAsignacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTurno" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Turnos" Relationship="Self.FK_dbo_AsignacionTurnoes_dbo_Turnos_IdTurno" FromRole="AsignacionTurnoes" ToRole="Turnos" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_dbo_AsignacionTurnoes_dbo_Usuarios_IdUser" FromRole="AsignacionTurnoes" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_dbo_Productos_dbo_Categorias_IdCategoria" FromRole="Categorias" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="DetalleCompras">
+          <Key>
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Double" Nullable="false" />
+          <Property Name="PrecioUnit" Type="Double" Nullable="false" />
+          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PrecioTotal" Type="Double" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_dbo_DetalleCompras_dbo_Productos_IdProducto" FromRole="DetalleCompras" ToRole="Productos" />
+          <NavigationProperty Name="Proveedores" Relationship="Self.FK_dbo_DetalleCompras_dbo_Proveedores_IdProveedor" FromRole="DetalleCompras" ToRole="Proveedores" />
+        </EntityType>
+        <EntityType Name="DetallePedidoes">
+          <Key>
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMenu" Type="Int32" Nullable="false" />
+          <Property Name="IdPedido" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Termino" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menus" Relationship="Self.FK_dbo_DetallePedidoes_dbo_Menus_IdMenu" FromRole="DetallePedidoes" ToRole="Menus" />
+          <NavigationProperty Name="Pedidoes" Relationship="Self.FK_dbo_DetallePedidoes_dbo_Pedidoes_IdPedido" FromRole="DetallePedidoes" ToRole="Pedidoes" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="NumFactura" />
+          </Key>
+          <Property Name="NumFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPedido" Type="Int32" Nullable="false" />
+          <Property Name="TotalNeto" Type="Double" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="Descuento" Type="Double" Nullable="false" />
+          <Property Name="FechaFactura" Type="DateTime" Precision="3" />
+          <Property Name="Propina" Type="Double" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pedidoes" Relationship="Self.FK_dbo_Facturas_dbo_Pedidoes_IdPedido" FromRole="Facturas" ToRole="Pedidoes" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Precio" Type="Double" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdTipoMenu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetallePedidoes" Relationship="Self.FK_dbo_DetallePedidoes_dbo_Menus_IdMenu" FromRole="Menus" ToRole="DetallePedidoes" />
+          <NavigationProperty Name="TipoMenus" Relationship="Self.FK_dbo_Menus_dbo_TipoMenus_IdTipoMenu" FromRole="Menus" ToRole="TipoMenus" />
+          <NavigationProperty Name="Recetas" Relationship="Self.FK_dbo_Recetas_dbo_Menus_IdMenu" FromRole="Menus" ToRole="Recetas" />
+        </EntityType>
+        <EntityType Name="Mesas">
+          <Key>
+            <PropertyRef Name="IdMesa" />
+          </Key>
+          <Property Name="IdMesa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumMesa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Pedidoes" Relationship="Self.FK_dbo_Pedidoes_dbo_Mesas_IdMesa" FromRole="Mesas" ToRole="Pedidoes" />
+        </EntityType>
+        <EntityType Name="Pedidoes">
+          <Key>
+            <PropertyRef Name="IdPedido" />
+          </Key>
+          <Property Name="IdPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Cliente" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdMesa" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetallePedidoes" Relationship="Self.FK_dbo_DetallePedidoes_dbo_Pedidoes_IdPedido" FromRole="Pedidoes" ToRole="DetallePedidoes" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK_dbo_Facturas_dbo_Pedidoes_IdPedido" FromRole="Pedidoes" ToRole="Facturas" />
+          <NavigationProperty Name="Mesas" Relationship="Self.FK_dbo_Pedidoes_dbo_Mesas_IdMesa" FromRole="Pedidoes" ToRole="Mesas" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_dbo_Pedidoes_dbo_Usuarios_IdUser" FromRole="Pedidoes" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Prestamos">
+          <Key>
+            <PropertyRef Name="IdPrestamo" />
+          </Key>
+          <Property Name="IdPrestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Double" Nullable="false" />
+          <Property Name="CantidadDevuelta" Type="Double" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaDev" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_dbo_Prestamos_dbo_Productos_IdProducto" FromRole="Prestamos" ToRole="Productos" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_dbo_Prestamos_dbo_Usuarios_IdUser" FromRole="Prestamos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Marca" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="Cantidad" Type="Double" Nullable="false" />
+          <Property Name="Fecha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CantidadMinima" Type="Double" Nullable="false" />
+          <Property Name="UnidadMedida" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FK_dbo_Productos_dbo_Categorias_IdCategoria" FromRole="Productos" ToRole="Categorias" />
+          <NavigationProperty Name="DetalleCompras" Relationship="Self.FK_dbo_DetalleCompras_dbo_Productos_IdProducto" FromRole="Productos" ToRole="DetalleCompras" />
+          <NavigationProperty Name="Prestamos" Relationship="Self.FK_dbo_Prestamos_dbo_Productos_IdProducto" FromRole="Productos" ToRole="Prestamos" />
+          <NavigationProperty Name="Recetas" Relationship="Self.FK_dbo_Recetas_dbo_Productos_IdProducto" FromRole="Productos" ToRole="Recetas" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NombreContacto" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DetalleCompras" Relationship="Self.FK_dbo_DetalleCompras_dbo_Proveedores_IdProveedor" FromRole="Proveedores" ToRole="DetalleCompras" />
+        </EntityType>
+        <EntityType Name="Recetas">
+          <Key>
+            <PropertyRef Name="IdReceta" />
+          </Key>
+          <Property Name="IdReceta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CantidadUtilizada" Type="Double" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="IdMenu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Menus" Relationship="Self.FK_dbo_Recetas_dbo_Menus_IdMenu" FromRole="Recetas" ToRole="Menus" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_dbo_Recetas_dbo_Productos_IdProducto" FromRole="Recetas" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_dbo_Usuarios_dbo_Roles_IdRol" FromRole="Roles" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TipoMenus">
+          <Key>
+            <PropertyRef Name="IdTipoMenu" />
+          </Key>
+          <Property Name="IdTipoMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Menus" Relationship="Self.FK_dbo_Menus_dbo_TipoMenus_IdTipoMenu" FromRole="TipoMenus" ToRole="Menus" />
+        </EntityType>
+        <EntityType Name="Turnos">
+          <Key>
+            <PropertyRef Name="IdTurno" />
+          </Key>
+          <Property Name="IdTurno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoraInicial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoraFinal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AsignacionTurnoes" Relationship="Self.FK_dbo_AsignacionTurnoes_dbo_Turnos_IdTurno" FromRole="Turnos" ToRole="AsignacionTurnoes" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AsignacionTurnoes" Relationship="Self.FK_dbo_AsignacionTurnoes_dbo_Usuarios_IdUser" FromRole="Usuarios" ToRole="AsignacionTurnoes" />
+          <NavigationProperty Name="Pedidoes" Relationship="Self.FK_dbo_Pedidoes_dbo_Usuarios_IdUser" FromRole="Usuarios" ToRole="Pedidoes" />
+          <NavigationProperty Name="Prestamos" Relationship="Self.FK_dbo_Prestamos_dbo_Usuarios_IdUser" FromRole="Usuarios" ToRole="Prestamos" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_dbo_Usuarios_dbo_Roles_IdRol" FromRole="Usuarios" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_dbo_AsignacionTurnoes_dbo_Turnos_IdTurno">
+          <End Role="Turnos" Type="Self.Turnos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AsignacionTurnoes" Type="Self.AsignacionTurnoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turnos">
+              <PropertyRef Name="IdTurno" />
+            </Principal>
+            <Dependent Role="AsignacionTurnoes">
+              <PropertyRef Name="IdTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AsignacionTurnoes_dbo_Usuarios_IdUser">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AsignacionTurnoes" Type="Self.AsignacionTurnoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="AsignacionTurnoes">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Productos_dbo_Categorias_IdCategoria">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DetalleCompras_dbo_Productos_IdProducto">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetalleCompras" Type="Self.DetalleCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="DetalleCompras">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DetalleCompras_dbo_Proveedores_IdProveedor">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetalleCompras" Type="Self.DetalleCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="DetalleCompras">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DetallePedidoes_dbo_Menus_IdMenu">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetallePedidoes" Type="Self.DetallePedidoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="IdMenu" />
+            </Principal>
+            <Dependent Role="DetallePedidoes">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DetallePedidoes_dbo_Pedidoes_IdPedido">
+          <End Role="Pedidoes" Type="Self.Pedidoes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DetallePedidoes" Type="Self.DetallePedidoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidoes">
+              <PropertyRef Name="IdPedido" />
+            </Principal>
+            <Dependent Role="DetallePedidoes">
+              <PropertyRef Name="IdPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Facturas_dbo_Pedidoes_IdPedido">
+          <End Role="Pedidoes" Type="Self.Pedidoes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidoes">
+              <PropertyRef Name="IdPedido" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Menus_dbo_TipoMenus_IdTipoMenu">
+          <End Role="TipoMenus" Type="Self.TipoMenus" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMenus">
+              <PropertyRef Name="IdTipoMenu" />
+            </Principal>
+            <Dependent Role="Menus">
+              <PropertyRef Name="IdTipoMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Recetas_dbo_Menus_IdMenu">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="IdMenu" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Pedidoes_dbo_Mesas_IdMesa">
+          <End Role="Mesas" Type="Self.Mesas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pedidoes" Type="Self.Pedidoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesas">
+              <PropertyRef Name="IdMesa" />
+            </Principal>
+            <Dependent Role="Pedidoes">
+              <PropertyRef Name="IdMesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Pedidoes_dbo_Usuarios_IdUser">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pedidoes" Type="Self.Pedidoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Pedidoes">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Prestamos_dbo_Productos_IdProducto">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Prestamos_dbo_Usuarios_IdUser">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Prestamos" Type="Self.Prestamos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Prestamos">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Recetas_dbo_Productos_IdProducto">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Recetas" Type="Self.Recetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Recetas">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Usuarios_dbo_Roles_IdRol">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntitiesNuevo" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AsignacionTurnoes" EntityType="Self.AsignacionTurnoes" />
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+          <EntitySet Name="DetalleCompras" EntityType="Self.DetalleCompras" />
+          <EntitySet Name="DetallePedidoes" EntityType="Self.DetallePedidoes" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" />
+          <EntitySet Name="Mesas" EntityType="Self.Mesas" />
+          <EntitySet Name="Pedidoes" EntityType="Self.Pedidoes" />
+          <EntitySet Name="Prestamos" EntityType="Self.Prestamos" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+          <EntitySet Name="Recetas" EntityType="Self.Recetas" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TipoMenus" EntityType="Self.TipoMenus" />
+          <EntitySet Name="Turnos" EntityType="Self.Turnos" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_dbo_AsignacionTurnoes_dbo_Turnos_IdTurno" Association="Self.FK_dbo_AsignacionTurnoes_dbo_Turnos_IdTurno">
+            <End Role="Turnos" EntitySet="Turnos" />
+            <End Role="AsignacionTurnoes" EntitySet="AsignacionTurnoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AsignacionTurnoes_dbo_Usuarios_IdUser" Association="Self.FK_dbo_AsignacionTurnoes_dbo_Usuarios_IdUser">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="AsignacionTurnoes" EntitySet="AsignacionTurnoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Productos_dbo_Categorias_IdCategoria" Association="Self.FK_dbo_Productos_dbo_Categorias_IdCategoria">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DetalleCompras_dbo_Productos_IdProducto" Association="Self.FK_dbo_DetalleCompras_dbo_Productos_IdProducto">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="DetalleCompras" EntitySet="DetalleCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DetalleCompras_dbo_Proveedores_IdProveedor" Association="Self.FK_dbo_DetalleCompras_dbo_Proveedores_IdProveedor">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="DetalleCompras" EntitySet="DetalleCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DetallePedidoes_dbo_Menus_IdMenu" Association="Self.FK_dbo_DetallePedidoes_dbo_Menus_IdMenu">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="DetallePedidoes" EntitySet="DetallePedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DetallePedidoes_dbo_Pedidoes_IdPedido" Association="Self.FK_dbo_DetallePedidoes_dbo_Pedidoes_IdPedido">
+            <End Role="Pedidoes" EntitySet="Pedidoes" />
+            <End Role="DetallePedidoes" EntitySet="DetallePedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Facturas_dbo_Pedidoes_IdPedido" Association="Self.FK_dbo_Facturas_dbo_Pedidoes_IdPedido">
+            <End Role="Pedidoes" EntitySet="Pedidoes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Menus_dbo_TipoMenus_IdTipoMenu" Association="Self.FK_dbo_Menus_dbo_TipoMenus_IdTipoMenu">
+            <End Role="TipoMenus" EntitySet="TipoMenus" />
+            <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Recetas_dbo_Menus_IdMenu" Association="Self.FK_dbo_Recetas_dbo_Menus_IdMenu">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Pedidoes_dbo_Mesas_IdMesa" Association="Self.FK_dbo_Pedidoes_dbo_Mesas_IdMesa">
+            <End Role="Mesas" EntitySet="Mesas" />
+            <End Role="Pedidoes" EntitySet="Pedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Pedidoes_dbo_Usuarios_IdUser" Association="Self.FK_dbo_Pedidoes_dbo_Usuarios_IdUser">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Pedidoes" EntitySet="Pedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Prestamos_dbo_Productos_IdProducto" Association="Self.FK_dbo_Prestamos_dbo_Productos_IdProducto">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Prestamos_dbo_Usuarios_IdUser" Association="Self.FK_dbo_Prestamos_dbo_Usuarios_IdUser">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Prestamos" EntitySet="Prestamos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Recetas_dbo_Productos_IdProducto" Association="Self.FK_dbo_Recetas_dbo_Productos_IdProducto">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Recetas" EntitySet="Recetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Usuarios_dbo_Roles_IdRol" Association="Self.FK_dbo_Usuarios_dbo_Roles_IdRol">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VLOModelsContextModelStoreContainer" CdmEntityContainer="EntitiesNuevo">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AsignacionTurnoes">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.AsignacionTurnoes">
+              <MappingFragment StoreEntitySet="AsignacionTurnoes">
+                <ScalarProperty Name="IdAsignacion" ColumnName="IdAsignacion" />
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleCompras">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.DetalleCompras">
+              <MappingFragment StoreEntitySet="DetalleCompras">
+                <ScalarProperty Name="IdDetalle" ColumnName="IdDetalle" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PrecioUnit" ColumnName="PrecioUnit" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallePedidoes">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.DetallePedidoes">
+              <MappingFragment StoreEntitySet="DetallePedidoes">
+                <ScalarProperty Name="IdDetalle" ColumnName="IdDetalle" />
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="IdPedido" ColumnName="IdPedido" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Termino" ColumnName="Termino" />
+                <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="NumFactura" ColumnName="NumFactura" />
+                <ScalarProperty Name="IdPedido" ColumnName="IdPedido" />
+                <ScalarProperty Name="TotalNeto" ColumnName="TotalNeto" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
+                <ScalarProperty Name="Propina" ColumnName="Propina" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Menus">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdTipoMenu" ColumnName="IdTipoMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesas">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Mesas">
+              <MappingFragment StoreEntitySet="Mesas">
+                <ScalarProperty Name="IdMesa" ColumnName="IdMesa" />
+                <ScalarProperty Name="NumMesa" ColumnName="NumMesa" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedidoes">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Pedidoes">
+              <MappingFragment StoreEntitySet="Pedidoes">
+                <ScalarProperty Name="IdPedido" ColumnName="IdPedido" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+                <ScalarProperty Name="IdMesa" ColumnName="IdMesa" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prestamos">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Prestamos">
+              <MappingFragment StoreEntitySet="Prestamos">
+                <ScalarProperty Name="IdPrestamo" ColumnName="IdPrestamo" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="CantidadDevuelta" ColumnName="CantidadDevuelta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FechaDev" ColumnName="FechaDev" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CantidadMinima" ColumnName="CantidadMinima" />
+                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Proveedores">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recetas">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Recetas">
+              <MappingFragment StoreEntitySet="Recetas">
+                <ScalarProperty Name="IdReceta" ColumnName="IdReceta" />
+                <ScalarProperty Name="CantidadUtilizada" ColumnName="CantidadUtilizada" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMenus">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.TipoMenus">
+              <MappingFragment StoreEntitySet="TipoMenus">
+                <ScalarProperty Name="IdTipoMenu" ColumnName="IdTipoMenu" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Turnos">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Turnos">
+              <MappingFragment StoreEntitySet="Turnos">
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="HoraInicial" ColumnName="HoraInicial" />
+                <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="VLO.Models.ContextModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

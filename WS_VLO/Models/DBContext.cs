@@ -35,5 +35,9 @@ namespace WS_VLO.Models
         public System.Data.Entity.DbSet<WS_VLO.Models.TipoMenu> TipoMenus { get; set; }
 
         public System.Data.Entity.DbSet<WS_VLO.Models.DetallePedido> DetallePedidoes { get; set; }
+
+        public System.Data.Entity.DbSet<WS_VLO.Models.Receta> Recetas { get; set; }
+
+        public System.Data.Entity.DbSet<WS_VLO.Models.Productos> Productos { get; set; }
     }
 }

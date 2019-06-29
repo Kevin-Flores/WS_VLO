@@ -172,8 +172,12 @@
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\MesasController.cs" />
     <Compile Include="Controllers\PedidoesController.cs" />
+    <Compile Include="Controllers\ProductosController.cs" />
+    <Compile Include="Controllers\RecetasController.cs" />
     <Compile Include="Controllers\TipoMenusController.cs" />
+    <Compile Include="Models\Descarga.cs" />
     <Compile Include="Models\DetallePedido.cs" />
+    <Compile Include="Models\ListaBebida.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Mesas.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -184,6 +188,8 @@
     </Compile>
     <Compile Include="Models\DBContext.cs" />
     <Compile Include="Models\Pedido.cs" />
+    <Compile Include="Models\Productos.cs" />
+    <Compile Include="Models\Receta.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\TipoMenu.cs" />
     <Compile Include="Models\Usuarios.cs" />

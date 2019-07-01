@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WS_VLO.Models;
+using Newtonsoft.Json;
 
 namespace WS_VLO.Controllers
 {
@@ -26,13 +27,34 @@ namespace WS_VLO.Controllers
         [ResponseType(typeof(TipoMenu))]
         public IHttpActionResult GetTipoMenu(int id)
         {
-            TipoMenu tipoMenu = db.TipoMenus.Find(id);
-            if (tipoMenu == null)
+            //TipoMenu tipoMenu = db.TipoMenus.Where();
+            var menu = db.Menus;
+            var tipomenu = db.TipoMenus;
+
+            var query = (from men in menu
+                        join tm in tipomenu on men.IdTipoMenu equals tm.IdTipoMenu
+                        where (tm.Nombre == "Bebidas" || tm.Nombre == "Postres" || tm.Nombre == "Sopas") && men.IdMenu == id
+                        select new
+                        {
+                            tm.IdTipoMenu,
+                            tm.Nombre
+                        }).FirstOrDefault();
+            
+            var seria = JsonConvert.SerializeObject(query);
+            TipoMenu TM = JsonConvert.DeserializeObject<TipoMenu>(seria);
+
+            if(TM == null)
             {
-                return NotFound();
+                TipoMenu TME = new TipoMenu();
+                TME.IdTipoMenu = 0;
+                TME.Nombre = "Nada";
+                return Ok(TME);
+            }
+            else
+            {
+                return Ok(TM);
             }
 
-            return Ok(tipoMenu);
         }
 
         // PUT: api/TipoMenus/5

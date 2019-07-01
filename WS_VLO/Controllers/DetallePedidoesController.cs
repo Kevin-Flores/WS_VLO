@@ -19,8 +19,8 @@ namespace WS_VLO.Controllers
         // GET: api/DetallePedidoes
         public IHttpActionResult GetDetallePedidoes()
         {
-            var orden = db.Pedidoes.Where(x => x.Estado == 1).ToList();
-            var detalle = db.DetallePedidoes.Where(x => x.Estado == 1).ToList();
+            var orden = db.Pedidoes.Where(x => x.Estado == 1 || x.Estado ==2).ToList();
+            var detalle = db.DetallePedidoes.Where(x => x.Estado == 1 || x.Estado == 2).ToList();
             ListaBebida cvm = new ListaBebida();
             cvm.pedidos = orden;
             cvm.detalle = detalle;
@@ -55,18 +55,8 @@ namespace WS_VLO.Controllers
             {
                 return BadRequest();
             }
-            else
-            {
-                //List<Receta> receta = db.Recetas.Where(o => o.IdMenu == detallePedido.IdMenu).ToList();
-                //foreach (var r in receta)
-                //{
-                //    Productos product = db.Productos.Where(o => o.IdProducto == r.IdProducto).FirstOrDefault();
-                //    Double total = detallePedido.cantidad * r.CantidadUtilizada;
-                //    product.Cantidad = product.Cantidad - total;
-                //    db.SaveChanges();
-                //}
-            }
 
+            detallePedido.Estado = 2;
             db.Entry(detallePedido).State = EntityState.Modified;
 
             try
@@ -126,7 +116,7 @@ namespace WS_VLO.Controllers
                 return NotFound();
             }
 
-            db.DetallePedidoes.Remove(detallePedido);
+            detallePedido.Estado = 2;
             db.SaveChanges();
 
             return Ok(detallePedido);

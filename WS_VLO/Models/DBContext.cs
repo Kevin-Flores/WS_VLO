@@ -39,5 +39,9 @@ namespace WS_VLO.Models
         public System.Data.Entity.DbSet<WS_VLO.Models.Receta> Recetas { get; set; }
 
         public System.Data.Entity.DbSet<WS_VLO.Models.Productos> Productos { get; set; }
+
+        public System.Data.Entity.DbSet<WS_VLO.Models.AsignacionTurno> AsignacionTurnoes { get; set; }
+
+        public System.Data.Entity.DbSet<WS_VLO.Models.Turnos> Turnos { get; set; }
     }
 }

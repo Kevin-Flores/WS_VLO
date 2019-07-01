@@ -167,6 +167,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AsignacionTurnoesController.cs" />
     <Compile Include="Controllers\DetallePedidoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
@@ -175,6 +176,8 @@
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\RecetasController.cs" />
     <Compile Include="Controllers\TipoMenusController.cs" />
+    <Compile Include="Controllers\TurnosController.cs" />
+    <Compile Include="Models\AsignacionTurno.cs" />
     <Compile Include="Models\Descarga.cs" />
     <Compile Include="Models\DetallePedido.cs" />
     <Compile Include="Models\ListaBebida.cs" />
@@ -187,11 +190,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DBContext.cs" />
+    <Compile Include="Models\MTurnos.cs" />
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Productos.cs" />
     <Compile Include="Models\Receta.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\TipoMenu.cs" />
+    <Compile Include="Models\Turnos.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
